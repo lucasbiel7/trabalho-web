@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "php.executablePath": "Z:/ProgramFiles/xamp/php/php.exe",
+    "php.validate.executablePath": "Z:/ProgramFiles/xamp/php/php.exe",
+    "editor.formatOnSave": true
+  }
+}
