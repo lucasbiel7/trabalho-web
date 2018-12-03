@@ -32,6 +32,18 @@ class EntityManager extends DataSource
         return $this->asListObject(parent::getConexao()->query($query));
     }
 
+    public function pegarPorId($id)
+    {
+        $result = $this->getAllUsingFilter(['id' => $id]);
+        if (count($result) > 1) {
+            throw new NaoUnicoResultadoException('Parece que há mais registros com mesmo id');
+        }
+        if (empty($result)) {
+            throw new SemResultadoException('Não foi possível encontrar o registro');
+        }
+        return $result[0];
+    }
+
     public function getAllUsingFilter($filtros, $operador = "and")
     {
         $query = "select * from $this->table ";
@@ -61,6 +73,9 @@ class EntityManager extends DataSource
         }
         return $lista;
     }
+
+
+
 
     /**
      * 
@@ -125,6 +140,14 @@ class EntityManager extends DataSource
             }
         }
         $query = "insert into $this->table ($campos) values ($values);";
+        $statement = $this->getConexao()->prepare($query);
+        return $statement->execute();
+    }
+
+
+    public function excluir(Entity $object)
+    {
+        $query = "delete from $this->table where id = " . $object->getId();
         $statement = $this->getConexao()->prepare($query);
         return $statement->execute();
     }

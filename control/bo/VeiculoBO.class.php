@@ -45,7 +45,7 @@ class VeiculoBO
 
     public function excluir($id)
     {
-
+        $this->veiculoDAO->excluir($this->veiculoDAO->pegarPorId($id));
     }
 }
 ?>
