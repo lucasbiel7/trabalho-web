@@ -37,5 +37,15 @@ class VeiculoBO
         }
         $this->veiculoDAO->insert($veiculo);
     }
+
+    public function getTodos()
+    {
+        return $this->veiculoDAO->getAll();
+    }
+
+    public function excluir($id)
+    {
+
+    }
 }
 ?>

@@ -26,6 +26,10 @@ div.field button {
   padding: 7px;
 }
 
+div.field button:hover {
+  background-color: blue;
+}
+
 .formulario {
   margin-top: 10rem;
   margin-left: 10rem;
@@ -83,4 +87,16 @@ nav ul li a {
 nav ul li a:visited {
   color: white;
   text-decoration: none;
+}
+
+table {
+  width: 100%;
+}
+
+table thead {
+  background-color: darkgray;
+  color: brown;
+}
+table tbody tr:nth-child(2n + 1) {
+  background-color: lightgray;
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . 'bo/UsuarioBO.class.php';
+require_once __DIR__ . '/bo/UsuarioBO.class.php';
 $usuarioBo = new UsuarioBO();
 try {
     /**

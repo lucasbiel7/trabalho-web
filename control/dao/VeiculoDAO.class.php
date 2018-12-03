@@ -17,7 +17,11 @@ class VeiculoDAO extends EntityManager
         $this->fields = array_merge(
             $this->fields,
             [
-                "modelo" => "modelo"
+                "modelo" => "modelo",
+                "nome" => "nome",
+                "categoria" => "categoria",
+                "quantidade" => "quantidade",
+                "valor" => "valor"
             ]
         );
     }
