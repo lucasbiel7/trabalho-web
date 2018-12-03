@@ -12,7 +12,7 @@ $categorias = $categoriaBO->getCategorias();
         </div>
         <div class="field">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
+            <input type="text" name="nome" id="nome" placeholder="Digite o nome">
         </div>
         <div class="field">
             <label for="categoria">Categoria</label>
