@@ -75,7 +75,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (2,'teste','teste','teste','teste','1996-05-05','teste','lucas','lucas','lucasbiel@icloud.com'),(3,'teste','teste','teste','teste','1996-05-05','teste','lucas','lucas','lucasbiel7@icloud.com');
+INSERT INTO `pessoa` VALUES (2,'Lucas','Dutra','teste','teste','1996-05-05','teste','lucas','lucas','lucasbiel@icloud.com'),(3,'teste','teste','teste','teste','1996-05-05','teste','lucas','lucas','lucasbiel7@icloud.com');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +96,7 @@ CREATE TABLE `veiculo` (
   PRIMARY KEY (`id`),
   KEY `categoria` (`categoria`),
   CONSTRAINT `veiculo_ibfk_1` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,6 +105,7 @@ CREATE TABLE `veiculo` (
 
 LOCK TABLES `veiculo` WRITE;
 /*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
+INSERT INTO `veiculo` VALUES (1,'test','teste',1,451,500000.00),(2,'Audi A3s','Audi A3s',1,4,109000.00),(3,'te','tesrte',3,2,3123.00),(4,'421','43',2,12,12.00),(5,'teste','tye',1,3,10000000.00);
 /*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -117,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-02 23:38:20
+-- Dump completed on 2018-12-03  1:31:13
