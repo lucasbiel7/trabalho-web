@@ -8,6 +8,8 @@ require_once __DIR__ . '/../../model/Entity.class.php';
  * Classe generica para realizar operações básicas no 
  * banco de dados
  * 
+ * @author Lucas Gabriel de Souza Dutra
+ * 
  */
 class EntityManager extends DataSource
 {
@@ -21,7 +23,7 @@ class EntityManager extends DataSource
         parent::DataSource();
         $this->table = $table;
         $this->classe = $classe;
-        $this->fields = ["id" => "getId"];
+        $this->fields = ["id" => "id"];
     }
 
     public function getAll()

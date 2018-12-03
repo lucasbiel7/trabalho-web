@@ -6,6 +6,7 @@ require_once __DIR__ . '/../excecoes/LoginException.class.php';
  * 
  * Classe para negócio de usuário
  * 
+ * @author Lucas Gabriel de Souza Dutra
  */
 class UsuarioBO
 {

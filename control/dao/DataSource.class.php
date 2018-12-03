@@ -6,6 +6,7 @@
  * Classe criada para realizar a 
  * conexão com banco de dados
  * 
+ * @author Lucas Gabriel de Souza Dutra
  */
 class DataSource
 {

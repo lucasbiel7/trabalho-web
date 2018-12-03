@@ -8,6 +8,21 @@ class Veiculo extends Entity
     private $modelo;
     private $categoria;
     private $quantidade;
+    private $valor;
+
+    public function Veiculo(
+        $nome = null,
+        $modelo = null,
+        $categoria = null,
+        $quantidade = null,
+        $valor = null
+    ) {
+        $this->nome = $nome;
+        $this->modelo = $modelo;
+        $this->categoria = $categoria;
+        $this->quantidade = $quantidade;
+        $this->valor = $valor;
+    }
 
     /**
      * Get the value of nome
@@ -85,6 +100,26 @@ class Veiculo extends Entity
     public function setQuantidade($quantidade)
     {
         $this->quantidade = $quantidade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of valor
+     */
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    /**
+     * Set the value of valor
+     *
+     * @return  self
+     */
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
 
         return $this;
     }
