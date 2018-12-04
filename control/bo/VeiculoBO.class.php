@@ -18,7 +18,7 @@ class VeiculoBO
         $this->veiculoDAO = new VeiculoDAO();
     }
 
-    public function cadastrar(Veiculo $veiculo)
+    public function cadastrarAtualizar(Veiculo $veiculo)
     {
         if (empty($veiculo->getModelo())) {
             throw new CadastroVeiculoException('Modelo não pode ser vazio!');
@@ -35,7 +35,7 @@ class VeiculoBO
         if (empty($veiculo->getValor())) {
             throw new CadastroVeiculoException('O valor deve ser preenchida!');
         }
-        $this->veiculoDAO->insert($veiculo);
+        $this->veiculoDAO->merge($veiculo);
     }
 
     public function getTodos()
@@ -46,6 +46,11 @@ class VeiculoBO
     public function excluir($id)
     {
         $this->veiculoDAO->excluir($this->veiculoDAO->pegarPorId($id));
+    }
+
+    public function pegarPorId($id)
+    {
+        return $this->veiculoDAO->pegarPorId($id);
     }
 }
 ?>

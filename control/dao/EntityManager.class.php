@@ -77,6 +77,7 @@ class EntityManager extends DataSource
 
 
 
+
     /**
      * 
      * Converte cada registro para objeto
@@ -97,7 +98,7 @@ class EntityManager extends DataSource
      * Recupera o método SET de um atributo
      * 
      */
-    function getMethodSetter($field)
+    protected function getMethodSetter($field)
     {
         return 'set' . strtoupper(substr($field, 0, 1)) . substr($field, 1);
     }
@@ -107,7 +108,7 @@ class EntityManager extends DataSource
      * Recupera o método GET de um atributo
      * 
      */
-    function getMethodGetter($field)
+    protected function getMethodGetter($field)
     {
         return 'get' . strtoupper(substr($field, 0, 1)) . substr($field, 1);
     }
@@ -144,6 +145,30 @@ class EntityManager extends DataSource
         return $statement->execute();
     }
 
+    public function merge(Entity $entidade)
+    {
+        if (empty($entidade->getId())) {
+            return $this->insert($entidade);
+        }
+        return $this->update($entidade);
+    }
+
+    public function update(Entity $entidade)
+    {
+        $atribuicoes = "";
+        foreach ($this->fields as $key => $value) {
+            if (!empty($atribuicoes)) {
+                $atribuicoes .= ",";
+            }
+            if ($key != 'id') {
+                $getter = $this->getMethodGetter($key);
+                $atribuicoes .= "$key = '" . $entidade->$getter() . "'";
+            }
+        }
+        $query = "update $this->table set $atribuicoes where id =" . $entidade->getId();
+        $statement = $this->getConexao()->prepare($query);
+        return $statement->execute();
+    }
 
     public function excluir(Entity $object)
     {

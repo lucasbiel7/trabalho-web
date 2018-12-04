@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../control/bo/CategoriaBO.class.php';
-require_once __DIR__ . '/../../model/Veiculo.class.php';
+require_once __DIR__ . '/../../control/bo/VeiculoBO.class.php';
 
 $categoriaBO = new CategoriaBO();
 $categorias = $categoriaBO->getCategorias();
@@ -8,10 +8,14 @@ if (isset($_COOKIE['veiculo'])) {
     $veiculo = unserialize($_COOKIE['veiculo']);
     echo $veiculo->getNome();
 }
+if (isset($_GET['id'])) {
+    $veiculoBO = new VeiculoBO();
+    $veiculo = $veiculoBO->pegarPorId($_GET['id']);
+}
 ?>
 <form action="../control/manter-veiculo.php" method="post">
     <div class="formulario">
-        <input type="text" name="id" id="id" hidden>
+        <input type="text" name="id" id="id" value="<?= isset($veiculo) ? $veiculo->getId() : '' ?>" hidden>
         <div class="field">
             <label for="modelo">Modelo</label>
             <input type="text" name="modelo" id="modelo" placeholder="Digite o modelo" 
@@ -40,7 +44,7 @@ if (isset($_COOKIE['veiculo'])) {
         </div>
         <div class="field">
             <label for="valor">Valor</label>
-            <input type="number" name="valor" id="valor" placeholder="Digite o valor" 
+            <input type="number" name="valor" id="valor" placeholder="Digite o valor" step="0.01"
                 value="<?= isset($veiculo) ? $veiculo->getValor() : ''; ?>">
         </div>
         <?= isset($_GET['error']) ? '<font color="red">' . $_GET['error'] . '</font>' : '' ?>

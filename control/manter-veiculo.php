@@ -11,7 +11,7 @@ $veiculo = new Veiculo(
 );
 $veiculo->setId($_POST['id']);
 try {
-    $veiculoBO->cadastrar($veiculo);
+    $veiculoBO->cadastrarAtualizar($veiculo);
     header('Location: ../view/sistema.php');
 } catch (CadastroVeiculoException $e) {
     setcookie('veiculo', serialize($veiculo), time() + 10, '/');
