@@ -100,3 +100,7 @@ table thead {
 table tbody tr:nth-child(2n + 1) {
   background-color: lightgray;
 }
+
+.mb-4 {
+  margin-bottom: 4rem !important;
+}

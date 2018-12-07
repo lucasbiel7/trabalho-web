@@ -19,5 +19,10 @@ class CategoriaBO
     {
         return $this->categoriaDAO->getAll();
     }
+
+    public function pegarPorId($id)
+    {
+        return $this->categoriaDAO->pegarPorId($id);
+    }
 }
 ?>

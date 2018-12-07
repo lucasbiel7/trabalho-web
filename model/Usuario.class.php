@@ -12,13 +12,13 @@ class Usuario extends Pessoa
         $ultimoNome = null,
         $cpf = null,
         $rg = null,
-        $dataNAscimento = null,
+        $dataNascimento = null,
         $endereco = null,
         $login = null,
         $senha = null,
         $email = null
     ) {
-        parent::Pessoa($nome, $ultimoNome, $cpf, $rg, $dataNAscimento, $endereco);
+        parent::Pessoa($nome, $ultimoNome, $cpf, $rg, $dataNascimento, $endereco);
         $this->login = $login;
         $this->senha = $senha;
         $this->email = $email;

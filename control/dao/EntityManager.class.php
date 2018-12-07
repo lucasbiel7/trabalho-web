@@ -75,9 +75,6 @@ class EntityManager extends DataSource
     }
 
 
-
-
-
     /**
      * 
      * Converte cada registro para objeto

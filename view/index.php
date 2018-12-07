@@ -22,8 +22,10 @@ include 'template/header.php';
                     <button type="submit">Entrar</button>
                 </div>
                 <?= isset($_GET['error']) ? "<font color='red'>" . $_GET['error'] . "</font>" : "" ?>
+                <a href="cadastrar-usuario.php">
+                Você é novo? Cadastre-se</a>
             </div>
-            
+           
         </form>
     </section>
 <?php

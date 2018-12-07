@@ -32,7 +32,11 @@ if (isset($_GET['id'])) {
             <select name="categoria" id="categoria">
                 <?php
                 foreach ($categorias as $categoria) {
-                    echo "<option value=" . $categoria->getId() . ">" . $categoria->getDescricao() . "</option>";
+                    echo "<option value=" . $categoria->getId() . " 
+                    " . ((isset($veiculo) &&
+                        $veiculo->getCategoria() == $categoria->getId())
+                        ? 'selected' : '') . ">" . $categoria->getDescricao() .
+                        "</option>";
                 }
                 ?>
             </select>
