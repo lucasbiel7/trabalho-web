@@ -51,7 +51,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <?= isset($_GET['error']) ? '<font color="red">' . $_GET['error'] . '</font>' : '' ?>
         <div class="field">
-            <button type="submit">Cadastrar</button>
+            <button type="submit"><?= empty($usuario->getId()) ? 'Cadastrar' : 'Editar' ?> </button>
         </div>
     </div>
 </form>
