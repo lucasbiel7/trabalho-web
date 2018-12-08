@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../util/Filter.class.php';
 require_once __DIR__ . '/DataSource.class.php';
 require_once __DIR__ . '/../../model/Entity.class.php';
 
@@ -44,6 +45,11 @@ class EntityManager extends DataSource
         return $result[0];
     }
 
+    /**
+     * Filtro simples para quando quiser
+     *  usar vários campos igual a um valor
+     * 
+     */
     public function getAllUsingFilter($filtros, $operador = "and")
     {
         $query = "select * from $this->table ";
@@ -55,6 +61,22 @@ class EntityManager extends DataSource
                 $filtro .= " where ";
             }
             $filtro .= "$key = '$value'";
+        }
+        $query .= $filtro;
+        return $this->asListObject(parent::getConexao()->query($query));
+    }
+
+    public function getByFilter($operador = "and", Filter ...$filtros)
+    {
+        $query = "select * from $this->table ";
+        $filtro = "";
+        foreach ($filtros as $filter) {
+            if (!empty($filtro)) {
+                $filtro .= " $operador ";
+            } else {
+                $filtro .= " where ";
+            }
+            $filtro .= $filter->getField() . $filter->getOperator() . " '" . $filter->getValue() . "'";
         }
         $query .= $filtro;
         return $this->asListObject(parent::getConexao()->query($query));

@@ -68,13 +68,22 @@ class UsuarioBO
         if (empty($usuario->getEmail())) {
             throw new CadastroPessoaException("O campo e-mail não pode ser vazio");
         }
-        $pessoas = $this->usuarioDAO->getAllUsingFilter(['login' => $usuario]);
-        if (!empty($pessoas) && empty($usuario->getId())) {
-            throw new CadastroPessoaException("Já existe um usuário com o login preenchido");
+        if (empty($usuario->getId())) {
+            $pessoas = $this->usuarioDAO->getAllUsingFilter(['login' => $usuario->getLogin()]);
+            if (!empty($pessoas)) {
+                throw new CadastroPessoaException("Já existe um usuário com o login preenchido");
+            }
+        } else {
+            $pessoas = $this->usuarioDAO->getByFilter(
+                'and',
+                new Filter('id', '<>', $usuario->getId()),
+                new Filter('login', '=', $usuario->getLogin())
+            );
+            if (!empty($pessoas)) {
+                throw new CadastroPessoaException("Já existe um usuário com o login preenchido");
+            }
         }
-
-
-
+        $this->usuarioDAO->merge($usuario);
     }
 }
 

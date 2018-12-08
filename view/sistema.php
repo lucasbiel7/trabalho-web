@@ -13,6 +13,9 @@ if (isset($_GET['tela'])) {
         case 'lv':
             include 'veiculo/listar.php';
             break;
+        case 'mu':
+            include 'usuario/formulario-usuario.php';
+            break;
     }
 }
 ?>
